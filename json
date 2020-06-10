@@ -1,0 +1,22 @@
+{
+  "steps": [
+    {
+      "json": {
+        "config": {
+          "field": "message"
+        },
+        "onFailure": [
+          {
+            "removeTag": {
+              "config": {
+                "tags": [
+                  "_jsonparsefailure"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
