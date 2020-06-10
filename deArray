@@ -1,0 +1,41 @@
+{
+  "steps": [
+    {
+      "addField": {
+        "config": {
+          "path": "LOGZIO_DEARRAY",
+          "value": "{{path.to.array_sawmill_json}}"
+        },
+        "onSuccess": [
+          {
+            "if": {
+              "condition": {
+                "matchRegex": {
+                  "field": "LOGZIO_DEARRAY",
+                  "regex": "^\\{\"0"
+                }
+              },
+              "then": [
+                {
+                  "addField": {
+                    "config": {
+                      "path": "path.to.array",
+                      "value": "{{path.to.array_sawmill_json.0}}"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "removeField": {
+        "config": {
+          "path": "LOGZIO_DEARRAY"
+        }
+      }
+    }
+  ]
+}
