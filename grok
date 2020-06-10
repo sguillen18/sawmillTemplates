@@ -1,0 +1,25 @@
+{
+  "steps": [
+    {
+      "grok": {
+        "config": {
+          "field": "message",
+          "patterns": [
+            "ENTER_PATTERN"
+          ]
+        },
+        "onFailure": [
+          {
+            "removeTag": {
+              "config": {
+                "tags": [
+                  "_grokparsefailure"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
