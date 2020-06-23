@@ -1,0 +1,24 @@
+{
+  "steps": [
+    {
+      "if": {
+        "condition": {
+          "fieldType": {
+            "path": "fieldName",
+            "type": "string"
+          }
+        },
+        "then": [
+          {
+            "rename": {
+              "config": {
+                "from": "fieldName",
+                "to": "fieldName_str"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
