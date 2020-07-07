@@ -4,23 +4,23 @@
       "addField": {
         "config": {
           "path": "LOGZIO_DEARRAY",
-          "value": "{{path.to.array_sawmill_json}}"
+          "value": "{{pathToRootObject_sawmill_json}}"
         },
         "onSuccess": [
           {
-            "if": {
-              "condition": {
-                "matchRegex": {
-                  "field": "LOGZIO_DEARRAY",
-                  "regex": "^\\{\"0"
-                }
+            "json": {
+              "config": {
+                "field": "LOGZIO_DEARRAY"
               },
-              "then": [
+              "onSuccess": [
                 {
-                  "addField": {
+                  "removeField": {
                     "config": {
-                      "path": "path.to.array",
-                      "value": "{{path.to.array_sawmill_json.0}}"
+                      "fields": [
+                        "first",
+                        "last",
+                        "LOGZIO_DEARRAY"
+                      ]
                     }
                   }
                 }
@@ -28,13 +28,6 @@
             }
           }
         ]
-      }
-    },
-    {
-      "removeField": {
-        "config": {
-          "path": "LOGZIO_DEARRAY"
-        }
       }
     }
   ]
